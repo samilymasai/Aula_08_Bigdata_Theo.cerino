@@ -1,23 +1,40 @@
 def IMC(p, a ):
-    t = p / (a*a)
+    t = p / (a**2)
     return t
 
 
-mp = float(input("Qual é seu peso : "))
+qtp = int(input("quantidade de pessoas :"))
 
-ma = float(input("Qual é sua altura : "))
+for i in range(qtp):
+    print(f"\npessoa{i+1}")
+    peso = float(input("Informe o peso: "))
+    altura = float(input("Informe a altura: "))
 
-i = IMC(mp, ma)
 
-if i > 18.5:
-    print('Abaixo do peso.')
-elif 18.6 > i > 24.9:
-    print('Peso ideal ( parabéns).')
-elif 25 > i > 29.9:
-    print('Levemente acima do peso.')
-elif 30 > i > 34.9 :
-    print('Obesidade grau l.')
-elif 35 > i > 39.9:
-    print('Obesidade grau ll (severa).')
-else:
-    print('Obesidade grau lll (mórbida).')
+
+
+a = IMC(peso, altura)
+
+match a:
+    case a if a < 17:
+        classificacao = ' Muito Abaixo'
+    case a if a < 18.5:
+        classificacao = 'Abaixo do peso'
+    case a if a < 25:
+        classificacao = 'Peso normal'
+    case a if a < 30:
+        classificacao = 'Acima do peso'
+    case a if a < 35:
+        classificacao = "Obesidade grau | "
+    case a if a < 40:
+        classificacao = 'Obesidade Grau ||'
+    case _:
+        classificacao = 'Obesidade grau |||'
+
+# Saída 
+print(30 * "-")
+print("Resultado")
+
+print(f"IMC {a:.2f}")
+print(f"Classficação {classificacao}")
+    
